@@ -31,5 +31,4 @@ gulp.task('webserver', function() {
         }));
 });
 
-//Watch task
 gulp.task('default', ['webserver', 'compile-scss', 'watch-scss'] );

@@ -1,6 +1,31 @@
-$main: #212121;
-$white: #ffffff;
+/* Colors */
+
+$black:         #454749;
+$white:         #ffffff;
+$orange:        #ffba33;
+$red:           #FF4933;
+$teal:          #719f9e;
+$teal-dasty:    #467d7d;
+$teal-dark:     #1a535c;
+$brown:         #ece0c8;
+$gray:          #bdc3c6;
+$gray-lighter:  #fcfcfd;
+$gray-light:    #ecf0f3;
+
+/* fonts */
+
+$base-font-family: "HelveticaNeueDeskInterface-Regular", "Arial", sans-serif;
+$base-font-size: 11px;
+$base-line-height: normal;
+
+/* grid */
+
+$page-width:800px;
+
+/* other */
 $transition-all: all 0.3s ease;
-$green: #25bc9b;
-$greenhover: darken($green, 5%);
-$red: #ed5959;
+
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -2,45 +2,41 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Hauskontor - main</title>
+    <title>Login form test task</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin,latin-ext,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<div id="page">
-    <header>
-        <div class="container">
-            <div class="col-xs-12">
-                <div id="logo">
-                    <i class="material-icons inline-block">dashboard</i>
-                    <h1 class="inline-block">The Best Gallery Ever</h1>
-                </div>
-            </div>
+<div class="page sign-in-page">
+    <div class="wrapper">
+        <div class="sidebar-image pull-left">
+            <img src="img/left-side.svg" class="Left-side">
         </div>
-    </header>
-    <div id="main">
-        <div class="container">
-            <div class="col-xs-12">
-                <div id="content"></div>
+        <div id="content" class="content">
+            <div class="sign-in-wrapper clearfix">
+                <form action="" id="sign-in-form" class="sign-in" onsubmit="loginApp.login(event, this)">
+                    <div class="col-xs-12 sign-in-header">
+                        <h2 class="pull-left">Already members</h2>
+                        <div class="pull-right">
+                            <a href="#">need help?</a>
+                        </div>
+                    </div>
+                    <fieldset >
+                        <input name="login-name" size="30" type="text" maxlength="32" required="required" class="login" id="login-name" placeholder="Enter your name" aria-required="true" aria-invalid="false" autocomplete="off">
+                        <input name="login-password" size="30" type="password" maxlength="32" required="required" class="password" id="login-password" placeholder="Enter your password" aria-required="true" aria-invalid="false" autocomplete="off">
+                    </fieldset>
+                    <div class="sign-in-actions col-xs-12">
+                        <button type="submit" class="btn" id="sign-in">Sign In</button>
+                    </div>
+                </form>
+            </div>
+            <div class="create-account col-xs-12">
+                <p>Don’t have an account yet ?</p>
+                <a class="create-account_link" id="create-account" href="/" >Create an account.</a>
             </div>
         </div>
     </div>
 </div>
-<footer>
-    <div id="footer">
-        <div class="copyright centertext">
-            <div class="container">
-                <div class="col-xs-12">
-
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 <script src="js/main.js"></script>
-<script src="js/app.js"></script>
 </body>
-
 </html>
