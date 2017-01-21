@@ -18,9 +18,14 @@
                     <form action="" class="form" onsubmit="loginApp.login(event, this)">
                         <div class="form-header container-fluid">
                             <h2 class="pull-left">Already member</h2>
-                            <div class="pull-right">
+                            <div class="pull-right popup">
                                 <a href="javascript://">need help?</a>
-                                <div class="popup"></div>
+                                <div class="popup-content">
+                                    <code>
+                                        login: <span>test</span>
+                                        password: <span>123</span>
+                                    </code>
+                                </div>
                             </div>
                         </div>
                         <fieldset class="form-fieldset">
@@ -49,7 +54,7 @@
                 </svg>
             </div>
             <p class="informer-text">Login successful</p>
-            <a class="informer-btn btn" href="javascript://">Continue</a>
+            <a class="informer-btn btn" href="javascript://" onclick="loginApp.back()">Continue</a>
         </div>
     </div>
 </div>

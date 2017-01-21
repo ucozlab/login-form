@@ -35,3 +35,12 @@ loginApp.login = function (event, form) {
     }
 
 };
+
+loginApp.back = function () {
+    var page = document.getElementsByClassName('page')[0];
+    page.classList.remove('page--informer');
+    setTimeout(function () {
+        document.getElementsByClassName('login')[0].style.display = 'block';
+        page.classList.remove('page--success');
+    }, 600);
+};
