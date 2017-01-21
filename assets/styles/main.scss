@@ -12,6 +12,7 @@ html {
 
 html, body {
   height: 100%;
+  overflow: hidden;
 }
 
 a, button, .btn, input {
@@ -28,9 +29,15 @@ a, button, .btn, input {
   position: relative;
 }
 
-.container {
-  max-width: $page-width;
-  height: 100%;
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.clearfix, .clearfix:after, .clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .row:after, .row:before {
+  content: " ";
+  display: table;
 }
 
 .pull-right {
@@ -41,16 +48,12 @@ a, button, .btn, input {
   float: left;
 }
 
-.mb15 {
-  margin-bottom: 15px;
-}
-
 .btn {
   background-color: $teal-dark;
   border: none;
   display: inline-block;
   outline: none;
-  padding: 12px;
+  line-height: 40px;
   text-align: center;
   border-radius: 3px;
   color: $white;
@@ -67,7 +70,8 @@ input[type=text], input[type=password] {
   outline: none;
   width: 98%;
   height: 30px;
-  padding: 10px;
+  line-height: 30px;
+  padding: 0 11px;
   border-radius: 3px;
   background-color: $gray-lighter;
   border: solid 1px $gray-light;
@@ -76,5 +80,146 @@ input[type=text], input[type=password] {
   font-size: inherit;
   &:focus, &:active {
     border: 1px solid $teal-dark;
+  }
+}
+
+.page {
+  background-color: $orange;
+  transition: all 0.3s ease;
+  &:before {
+    display: block;
+    transform: skew(-7deg);
+    position: absolute;
+    top: 0;
+    left: -5%;
+    width: 48%;
+    content: "";
+    font-size: 0;
+    line-height: 0;
+    height: 100%;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#467d7d+1,1a535c+100 */
+    background: #467d7d; /* Old browsers */
+    background: -moz-linear-gradient(left,  #467d7d 1%, #1a535c 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #467d7d 1%,#1a535c 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #467d7d 1%,#1a535c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#467d7d', endColorstr='#1a535c',GradientType=1 ); /* IE6-9 */
+    transition: all 0.6s ease;
+  }
+  &:after {
+    background-image: radial-gradient(circle at 50% 48%, #3c818c, #1a535c);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    content: "";
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s ease;
+  }
+  &.page--success {
+    &:before {
+      width: 110%;
+    }
+    .login {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+  &.page--informer {
+    .informer {
+      visibility: visible;
+      opacity: 1;
+    }
+    &:after {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.wrapper {
+  max-width: 720px;
+  width: 100%;
+  height: 340px;
+  position: absolute;
+  z-index: 2;
+  top: 45%;
+  left: 0;
+  right: 0;
+  margin: -170px auto 0 auto;
+}
+.login {
+  transition: all 0.6s ease;
+  &-image {
+    float: left;
+  }
+  &-content {
+    overflow: hidden;
+    padding: 50px 0 0 100px;
+    text-align: center;
+    &__form {
+      @include inline-block;
+      text-align: center;
+      padding-bottom: 15px;
+      background-color: $white;
+      box-shadow: 0 6px 21px 0 rgba(0,0,0,0.2);
+      max-width: 250px;
+      color: $gray;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    &__footer {
+      margin-top: 25px;
+      text-align: center;
+    }
+  }
+}
+.form {
+  &-header {
+    padding: 17px;
+    display: table;
+    width: 100%;
+    box-shadow: 0 0 13px 0 $brown;
+    a, a:active, a:visited, a:hover {
+      color: $gray;
+    }
+    h2 {
+      color: $orange;
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      font-size: inherit;
+      font-weight: normal;
+    }
+  }
+  &-fieldset {
+    border: none;
+    padding: 20px 12px;
+  }
+  &-actions {
+    button {
+      width: 100%;
+    }
+  }
+}
+
+.informer {
+  opacity: 0;
+  visibility: hidden;
+  transition: $transition-all;
+  text-align: center;
+  &-sign {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    display: inline-block;
+    background-color: $white;
+    margin-bottom: 30px;
+    line-height: 113px;
+  }
+  &-text {
+    margin-bottom: 15px;
+    font-size: 12px;
   }
 }

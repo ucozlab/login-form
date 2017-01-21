@@ -7,33 +7,49 @@
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
 <body>
-<div class="page sign-in-page">
+<div class="page">
     <div class="wrapper">
-        <div class="sidebar-image pull-left">
-            <img src="img/left-side.svg" class="Left-side">
-        </div>
-        <div id="content" class="content">
-            <div class="sign-in-wrapper clearfix">
-                <form action="" id="sign-in-form" class="sign-in" onsubmit="loginApp.login(event, this)">
-                    <div class="col-xs-12 sign-in-header">
-                        <h2 class="pull-left">Already members</h2>
-                        <div class="pull-right">
-                            <a href="#">need help?</a>
+        <div class="login">
+            <div class="login-image pull-left">
+                <img src="img/left-side.svg" class="Left-side">
+            </div>
+            <div class="login-content">
+                <div class="login-content__form clearfix">
+                    <form action="" class="form" onsubmit="loginApp.login(event, this)">
+                        <div class="form-header container-fluid">
+                            <h2 class="pull-left">Already member</h2>
+                            <div class="pull-right">
+                                <a href="javascript://">need help?</a>
+                                <div class="popup"></div>
+                            </div>
                         </div>
-                    </div>
-                    <fieldset >
-                        <input name="login-name" size="30" type="text" maxlength="32" required="required" class="login" id="login-name" placeholder="Enter your name" aria-required="true" aria-invalid="false" autocomplete="off">
-                        <input name="login-password" size="30" type="password" maxlength="32" required="required" class="password" id="login-password" placeholder="Enter your password" aria-required="true" aria-invalid="false" autocomplete="off">
-                    </fieldset>
-                    <div class="sign-in-actions col-xs-12">
-                        <button type="submit" class="btn" id="sign-in">Sign In</button>
-                    </div>
-                </form>
+                        <fieldset class="form-fieldset">
+                            <input name="login-name" size="30" type="text" maxlength="32" required="required" class="login" id="login-name" placeholder="Enter your name" aria-required="true" aria-invalid="false" autocomplete="off">
+                            <input name="login-password" size="30" type="password" maxlength="32" required="required" class="password" id="login-password" placeholder="Enter your password" aria-required="true" aria-invalid="false" autocomplete="off">
+                        </fieldset>
+                        <div class="form-actions container-fluid">
+                            <button type="submit" class="btn" id="sign-in">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-content__footer">
+                    <p>Don’t have an account yet ?</p>
+                    <a class="create-account_link" id="create-account" href="/" >Create an account</a>
+                </div>
             </div>
-            <div class="create-account col-xs-12">
-                <p>Don’t have an account yet ?</p>
-                <a class="create-account_link" id="create-account" href="/" >Create an account.</a>
+        </div>
+        <div class="informer">
+            <div class="informer-sign">
+                <svg width="30px" height="24px" viewBox="0 0 30 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Dashboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="The-login-is-successful" transform="translate(-385.000000, -198.000000)" fill="#FFBA33">
+                            <path d="M414.049,200.009 L413.19,199.151 C412.247,198.206 410.702,198.206 409.756,199.151 L395.172,213.737 L389.997,208.564 C389.054,207.62 387.508,207.62 386.565,208.565 L385.707,209.422 C384.764,210.366 384.764,211.911 385.707,212.855 L393.451,220.607 C394.395,221.55 395.94,221.55 396.884,220.607 L414.049,203.442 C414.991,202.498 414.991,200.953 414.049,200.009 L414.049,200.009 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </svg>
             </div>
+            <p class="informer-text">Login successful</p>
+            <a class="informer-btn btn" href="javascript://">Continue</a>
         </div>
     </div>
 </div>

@@ -1,18 +1,14 @@
-var loginApp = {};
+var loginApp = {
+    name: 'test',
+    password: 123
+};
 
 loginApp.httpRequest = function (url) {
 
     var http = new XMLHttpRequest();
     http.open("GET", url, true);
-    http.withCredentials = true;
-    // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    http.onreadystatechange = function() {//Call a function when the state changes.
-        if(http.readyState == 4 && http.status == 200) {
-            alert(http.responseText);
-        }
-        else {
-            console.log(http.responseText);
-        }
+    http.onreadystatechange = function() {
+        http.readyState == 4 && http.status == 200 && alert(http.responseText);
     };
     http.send();
 
@@ -25,5 +21,17 @@ loginApp.getFormData = function (form) {
 
 loginApp.login = function (event, form) {
     event.preventDefault();
-    this.httpRequest('https://www.prestigenews.com/api/v3/login'+ this.getFormData(form));
+    // this.httpRequest('https://www.prestigenews.com/api/v3/login'+ this.getFormData(form));
+
+    var formData = new FormData(form),
+        page     = document.getElementsByClassName('page')[0];
+
+    if((formData.get('login-name') === this.name) && (formData.get('login-password') == this.password)) {
+        page.classList.add('page--success');
+        setTimeout(function () {
+            document.getElementsByClassName('login')[0].style.display = 'none';
+            page.classList.add('page--informer');
+        }, 600);
+    }
+
 };
