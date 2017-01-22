@@ -165,13 +165,14 @@ input[type=text], input[type=password] {
     overflow: hidden;
     padding: 50px 0 0 100px;
     text-align: center;
-    &__form {
+    &__form-container {
       @include inline-block;
       text-align: center;
       padding-bottom: 15px;
       background-color: $white;
       box-shadow: 0 6px 21px 0 rgba(0,0,0,0.2);
-      max-width: 250px;
+      width: 100%;
+      height: 100%;
       color: $gray;
       border-radius: 4px;
     }
@@ -181,6 +182,7 @@ input[type=text], input[type=password] {
     }
   }
 }
+
 .form {
   &-header {
     padding: 17px;
@@ -263,6 +265,7 @@ input[type=text], input[type=password] {
     }
     code {
       span {
+        float: right;
         color: $teal-dark;
       }
     }
@@ -272,5 +275,103 @@ input[type=text], input[type=password] {
       opacity: 1;
       visibility: visible;
     }
+  }
+}
+
+.card {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  width: 250px;
+  height: 218px;
+  margin: 0 auto;
+  &.flipped {
+    transform: rotateY( 180deg );
+  }
+  & > figure {
+    margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    &.back {
+      z-index: 1000;
+      -webkit-transform: rotateY( 180deg );
+      -moz-transform: rotateY( 180deg );
+      -o-transform: rotateY( 180deg );
+      transform: rotateY( 180deg );
+    }
+  }
+}
+
+.newmember {
+  position: relative;
+  &-form {
+    transition: $transition-all;
+  }
+  .informer-sign {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -50px 0 0 -50px;
+    background-image: radial-gradient(circle at 50% 48%,#3c818c,#1a535c);
+    opacity: 0;
+    visibility: hidden;
+  }
+  &.newmember-added {
+    .newmember-form {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .informer-sign {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.shake {
+  -webkit-animation-name: shake;
+  animation-name: shake;
+}
+
+@-webkit-keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes shake {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
   }
 }
