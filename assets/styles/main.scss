@@ -81,6 +81,9 @@ input[type=text], input[type=password] {
   &:focus, &:active {
     border: 1px solid $teal-dark;
   }
+  &.input--error {
+    border: 1px solid $red;
+  }
 }
 
 .page {

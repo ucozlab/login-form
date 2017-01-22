@@ -31,8 +31,8 @@
                                     </div>
                                 </div>
                                 <fieldset class="form-fieldset">
-                                    <input name="login-name" size="30" type="text" maxlength="32" required="required" class="login" id="login-name" placeholder="Enter your name" aria-required="true" aria-invalid="false" autocomplete="off">
-                                    <input name="login-password" size="30" type="password" maxlength="32" required="required" class="password" id="login-password" placeholder="Enter your password" aria-required="true" aria-invalid="false" autocomplete="off">
+                                    <input name="login-name" size="30" onkeyup="loginApp.removeInputError(this)" type="text" maxlength="32" required="required" class="login" id="login-name" placeholder="Enter your name" aria-required="true" aria-invalid="false" autocomplete="off">
+                                    <input name="login-password" size="30" onkeyup="loginApp.removeInputError(this)" type="password" maxlength="32" required="required" class="password" id="login-password" placeholder="Enter your password" aria-required="true" aria-invalid="false" autocomplete="off">
                                 </fieldset>
                                 <div class="form-actions container-fluid">
                                     <button type="submit" class="btn">Sign In</button>

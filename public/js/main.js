@@ -23,43 +23,61 @@ loginApp.login = function (event, form) {
     event.preventDefault();
     // this.httpRequest('https://www.prestigenews.com/api/v3/login'+ this.getFormData(form));
 
-    var formData = new FormData(form);
+    var formData        = new FormData(form),
+        correctLogin    = (formData.get('login-name') === this.name),
+        correctPassword = (formData.get('login-password') == this.password);
 
-    if((formData.get('login-name') === this.name) && (formData.get('login-password') == this.password)) {
+    if (correctLogin && correctPassword) {
 
-        this.success();
+        this.loginSuccess();
 
-    } else if(this.checkLocalStorage()) {
+    } else if(this.checkLocalStorage() && localStorage.getItem('loginFormMember')) {
 
-        var match = JSON.parse(localStorage.getItem('loginFormMember')).some(function(member){
-            return (member['login'] == formData.get('login-name') && member['password'] == formData.get('login-password'))
+        var matchLogin = JSON.parse(localStorage.getItem('loginFormMember')).some(function(member){
+            return member['login'] == formData.get('login-name')
         });
 
-        match ? this.success() : this.shake();
+        var matchPassword = JSON.parse(localStorage.getItem('loginFormMember')).some(function(member){
+            return member['password'] == formData.get('login-password')
+        });
+
+        (matchLogin && matchPassword)
+            ? this.loginSuccess()
+            : this.loginError(correctLogin || matchLogin, correctPassword || matchPassword);
 
     } else {
-
-        this.shake();
-
+        this.loginError(correctLogin, correctPassword);
     }
 
 };
 
-loginApp.shake = function () {
-    var form = document.getElementsByClassName('login-content__form')[0];
+loginApp.loginError = function (correctLogin, correctPassword) {
+
+    var form          = document.getElementsByClassName('login-content__form')[0],
+        inputLogin    = document.getElementById('login-name'),
+        inputPassword = document.getElementById('login-password');
+
+    !correctLogin    && inputLogin.classList.add('input--error');
+    !correctPassword && inputPassword.classList.add('input--error');
+
     form.classList.add('animated','shake');
     setTimeout(function () {
         form.classList.remove('animated','shake');
     }, 1000);
+
 };
 
-loginApp.success = function () {
+loginApp.loginSuccess = function () {
     var page = document.getElementsByClassName('page')[0];
     page.classList.add('page--success');
     setTimeout(function () {
         document.getElementsByClassName('login')[0].style.display = 'none';
         page.classList.add('page--informer');
     }, 600);
+};
+
+loginApp.removeInputError = function (input) {
+    input.classList.contains('input--error') && input.classList.remove('input--error');
 };
 
 loginApp.back = function () {
